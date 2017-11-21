@@ -25,7 +25,11 @@ namespace BugManagement.Entities
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new AttachmentConfiguration());
             modelBuilder.ApplyConfiguration(new IssueConfiguration());
-
+            modelBuilder.ApplyConfiguration(new ActivityConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new PermissionConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
         }
 
         public DbSet<IssueType> IssueType { get; set; }
@@ -36,6 +40,10 @@ namespace BugManagement.Entities
         public DbSet<Project> Project { get; set; }
         public DbSet<Attachment> Attachment { get; set; }
         public DbSet<Issue> Issue { get; set; }
-
+        public DbSet<Activity> Activity { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<RolePermission> RolePermission { get; set; }
     }
 }

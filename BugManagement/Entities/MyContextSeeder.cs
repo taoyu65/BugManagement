@@ -151,6 +151,24 @@ namespace BugManagement.Entities
             {
 
             }
+
+            //<!-- Activity -->
+            if (!context.Activity.Any())
+            {
+
+            }
+
+            //<!-- Role -->
+            if (!context.Role.Any())
+            {
+
+            }
+
+            //<!-- Permission -->
+            if (!context.Permission.Any())
+            {
+
+            }
         }
     }
 }
