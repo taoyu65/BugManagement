@@ -8,7 +8,7 @@ namespace BugManagement.Entities
     public class Activity
     {
         public int Id { get; set; }
-        public string Type { get; }
+        public string Type { get; set; }
         public int IssueId { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }

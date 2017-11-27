@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using NLog.Extensions.Logging;
 using BugManagement.Entities;
 using Microsoft.EntityFrameworkCore;
+using BugManagement.Repositories;
 
 namespace BugManagement
 {
@@ -30,6 +31,9 @@ namespace BugManagement
 
             var connectionString = Configuration.GetConnectionString("bugManagementDbConnectionString");
             services.AddDbContext<MyContext>(x => x.UseSqlServer(connectionString));
+
+            //Inject repository
+            services.AddScoped<IActivityRepository, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,13 +42,15 @@ namespace BugManagement
             MyContext myContext)
         {
             //<!-- NLog -->
-            ///loggerFactory.AddProvider(new NLogLoggerProvider());
-            loggerFactory.AddNLog();  //OK as well
+            ///loggerFactory.AddProvider(new NLogLoggerProvider());//OK as well
+            loggerFactory.AddNLog();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStatusCodePages();
 
             //<!-- Seed -->
             myContext.SeedForContext();

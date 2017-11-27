@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BugManagement.DbConfiguration
 {
-    public class ActivityConfiguration: IEntityTypeConfiguration<Activity>
+    public class ActivityConfiguration : IEntityTypeConfiguration<Activity>
     {
         public void Configure(EntityTypeBuilder<Activity> builder)
         {
@@ -16,7 +16,17 @@ namespace BugManagement.DbConfiguration
             builder.Property(x => x.Type).IsRequired();
             builder.Property(x => x.IssueId).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-            builder.Property(x => x.CreatedAt).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.CreatedAt).IsRowVersion().HasDefaultValue(DateTime.Now);
+
+            builder.HasOne(x => x.Issue)
+                .WithMany(x => x.Activities)
+                .HasForeignKey(x => x.IssueId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.Activities)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            //TODO: need to be tested
         }
     }
 }

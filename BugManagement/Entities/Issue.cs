@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BugManagement.Entities
 {
@@ -10,19 +7,19 @@ namespace BugManagement.Entities
         public int Id { get; set; }
         public string Summary { get; set; }
         public int IssueTypeId { get; set; }
-        public int ReporterId { get; set; }
+        public int ReporterUserId { get; set; }
         public string Description { get; set; }
-        public int VersionId { get; set; }
+        public int ProjectVersionId { get; set; }
         public int PriorityId { get; set; }
         public string Label { get; set; }
-        public int AttachmentId { get; set; }
-        public int AssigneeId { get; set; }
+        public int AssigneeUserId { get; set; }
 
         public IssueType IssueType { get; set; }
         public User Reporter { get; set; }
-        public Version Version { get; set; }
+        public ProjectVersion Version { get; set; }
         public Priority Priority { get; set; }
-        public Attachment Attachment { get; set; }
         public User Assignee { get; set; }
+
+        public ICollection<Activity> Activities { get; set; }
     }
 }

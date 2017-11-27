@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugManagement", "BugManagement\BugManagement.csproj", "{256A08B8-FF53-4FB6-A487-AF2A3DBEB1CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugManagement", "BugManagement\BugManagement.csproj", "{256A08B8-FF53-4FB6-A487-AF2A3DBEB1CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugManagement.Infrastructure", "BugManagement.Infrastructure\BugManagement.Infrastructure.csproj", "{9168E944-9A5B-4140-84F4-532251E48721}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{256A08B8-FF53-4FB6-A487-AF2A3DBEB1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{256A08B8-FF53-4FB6-A487-AF2A3DBEB1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{256A08B8-FF53-4FB6-A487-AF2A3DBEB1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9168E944-9A5B-4140-84F4-532251E48721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9168E944-9A5B-4140-84F4-532251E48721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9168E944-9A5B-4140-84F4-532251E48721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9168E944-9A5B-4140-84F4-532251E48721}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

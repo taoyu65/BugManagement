@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BugManagement.Entities
 {
@@ -10,7 +9,7 @@ namespace BugManagement.Entities
         public static void SeedForContext(this MyContext context)
         {
             //<!-- IssueType -->
-            if (!context.IssueType.Any())
+            if (!context.IssueTypes.Any())
             {
                 var IssueType = new List<IssueType> {
                     new IssueType {
@@ -34,12 +33,12 @@ namespace BugManagement.Entities
                         Description = "A question or concern that relating the application."
                     }
                 };
-                context.IssueType.AddRange(IssueType);
+                context.IssueTypes.AddRange(IssueType);
                 context.SaveChanges();
             }
 
             //<!-- ProjectVersion -->
-            if (!context.ProjectVersion.Any())
+            if (!context.ProjectVersions.Any())
             {
                 var ProjectVersion = new List<ProjectVersion> {
                     new ProjectVersion {
@@ -53,12 +52,12 @@ namespace BugManagement.Entities
                         Order = 1
                     }
                 };
-                context.ProjectVersion.AddRange(ProjectVersion);
+                context.ProjectVersions.AddRange(ProjectVersion);
                 context.SaveChanges();
             }
 
             //<!-- Priority -->
-            if (!context.Priority.Any())
+            if (!context.Priorities.Any())
             {
                 var Priority = new List<Priority> {
                     new Priority {
@@ -87,12 +86,12 @@ namespace BugManagement.Entities
                          Order = 4
                      }
                 };
-                context.Priority.AddRange(Priority);
+                context.Priorities.AddRange(Priority);
                 context.SaveChanges();
             }
 
             //<!-- IssueStatus -->
-            if (!context.IssueStatus.Any())
+            if (!context.IssueStatuses.Any())
             {
                 var IssueStatus = new List<IssueStatus> {
                     new IssueStatus {
@@ -124,48 +123,120 @@ namespace BugManagement.Entities
                         Description = "done"
                     }
                 };
-                context.IssueStatus.AddRange(IssueStatus);
+                context.IssueStatuses.AddRange(IssueStatus);
                 context.SaveChanges();
             }
 
             //<!-- User -->
-            if (!context.User.Any())
+            if (!context.Users.Any())
             {
-
+                var users = new List<User> {
+                    new User {
+                        UserName = "admin1",
+                        Password = "password1"
+                    },
+                    new User {
+                        UserName = "admin2",
+                        Password = "password2"
+                    },
+                    new User {
+                        UserName = "admin3",
+                        Password = "password3"
+                    }
+                };
+                context.AddRange(users);
+                context.SaveChanges();
             }
 
             //<!-- Project -->
-            if (!context.Project.Any())
+            if (!context.Projects.Any())
             {
 
             }
 
             //<!-- Attachment -->
-            if (!context.Attachment.Any())
+            if (!context.Attachments.Any())
             {
 
             }
 
             //<!-- Issue -->
-            if (!context.Issue.Any())
+            if (!context.Issues.Any())
             {
-
+                var issues = new List<Issue> {
+                    new Issue {
+                        Summary = "this is bug 1",
+                        Description = "bug 1 description",
+                        AssigneeUserId = 1,
+                        IssueTypeId = 1,
+                        PriorityId = 1,
+                        Label = "BugLabel",
+                        ReporterUserId = 1,
+                        ProjectVersionId = 1
+                    },
+                    new Issue {
+                        Summary = "this is bug 2",
+                        Description = "bug 2 description",
+                        AssigneeUserId = 2,
+                        IssueTypeId = 1,
+                        PriorityId = 1,
+                        Label = "BugLabel",
+                        ReporterUserId = 2,
+                        ProjectVersionId = 1
+                    },
+                    new Issue {
+                        Summary = "this is bug 3",
+                        Description = "bug 3 description",
+                        AssigneeUserId = 3,
+                        IssueTypeId = 1,
+                        PriorityId = 1,
+                        Label = "BugLabel",
+                        ReporterUserId = 3,
+                        ProjectVersionId = 1
+                    },
+                };
+                context.Issues.AddRange(issues);
+                context.SaveChanges();
             }
 
             //<!-- Activity -->
-            if (!context.Activity.Any())
+            if (!context.Activities.Any())
             {
-
+                var activities = new List<Activity> {
+                    new Activity {
+                        Title = "add a comment1",
+                        Content = "This is a comment1.",
+                        Type = "comment",
+                        IssueId = 1,
+                        UserId = 1
+                    },
+                    new Activity {
+                        Title = "add a comment2",
+                        Content = "This is a comment2.",
+                        Type = "comment",
+                        IssueId = 2,
+                        UserId = 2
+                    },
+                    new Activity {
+                        Title = "add a comment3",
+                        Content = "This is a comment3.",
+                        Type = "comment",
+                        IssueId = 3,
+                        UserId = 3
+                    },
+                };
+                context.Activities.AddRange(activities);
+                context.SaveChanges();
             }
 
             //<!-- Role -->
-            if (!context.Role.Any())
+            if (!context.Roles.Any())
             {
 
             }
 
             //<!-- Permission -->
-            if (!context.Permission.Any())
+            if (!context.Permissions.Any())
             {
 
             }

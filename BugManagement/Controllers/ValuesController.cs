@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using BugManagement.Entities;
 
 namespace BugManagement.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private MyContext _context;
+
+        public ValuesController(MyContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
