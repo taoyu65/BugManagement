@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contract\" />
+    <ProjectReference Include="..\BugManagement.Core\BugManagement.Core.csproj" />
   </ItemGroup>
 
 </Project>

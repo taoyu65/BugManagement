@@ -9,9 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NLog.Extensions.Logging;
-using BugManagement.Entities;
 using Microsoft.EntityFrameworkCore;
-using BugManagement.Repositories;
+using BugManagement.Infrastructure.Context;
+using BugManagement.Infrastructure.Seeder;
 
 namespace BugManagement
 {
@@ -33,7 +33,7 @@ namespace BugManagement
             services.AddDbContext<MyContext>(x => x.UseSqlServer(connectionString));
 
             //Inject repository
-            services.AddScoped<IActivityRepository, ActivityRepository>();
+            //services.AddScoped<IActivityRepository, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

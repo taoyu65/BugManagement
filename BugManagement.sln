@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugManagement.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugManagement.Common", "BugManagement.Common\BugManagement.Common.csproj", "{B7A90187-1902-4AE0-8649-BA7179775952}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugManagement.Core", "BugManagement.Core\BugManagement.Core.csproj", "{D064E42C-2701-4399-B83A-D30767046EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B7A90187-1902-4AE0-8649-BA7179775952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7A90187-1902-4AE0-8649-BA7179775952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7A90187-1902-4AE0-8649-BA7179775952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D064E42C-2701-4399-B83A-D30767046EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D064E42C-2701-4399-B83A-D30767046EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D064E42C-2701-4399-B83A-D30767046EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D064E42C-2701-4399-B83A-D30767046EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
