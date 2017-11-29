@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BugManagement.Infrastructure.Tools;
+﻿using BugManagement.Infrastructure.Tools;
+using BugManagement.Infrastructure.Tools.Helpers;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace BugManagement.Infrastructure

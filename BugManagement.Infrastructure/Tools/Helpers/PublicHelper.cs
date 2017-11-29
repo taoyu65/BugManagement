@@ -1,10 +1,11 @@
-﻿using BugManagement.Infrastructure.Tools.Extensions;
+﻿using BugManagement.Infrastructure.Tools.Exceptions;
+using BugManagement.Infrastructure.Tools.Extensions;
 using System;
 
-namespace BugManagement.Infrastructure.Tools
+namespace BugManagement.Infrastructure.Tools.Helpers
 {
     public static class PublicHelper
-    {//todo - translate and complete this
+    {
         #region Public Method
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace BugManagement.Infrastructure.Tools
         }
 
         /// <summary>
-        /// Throw the exception to the layer of invoke
+        /// Throw the exception to the invoking layer
         /// </summary>
         /// <param name="msg"> Custom information of exception </param>
         /// <param name="e"> The instance of actual causes the exception </param>
@@ -51,16 +52,16 @@ namespace BugManagement.Infrastructure.Tools
             }
             else if (string.IsNullOrEmpty(msg))
             {
-                msg = "未知组件异常，详情请查看日志信息。";
+                msg = "Unknown exception.";
             }
-            return e == null ? new ComponentException(string.Format("组件异常：{0}", msg)) : new ComponentException(string.Format("组件异常：{0}", msg), e);
+            return e == null ? new ComponentException(string.Format("Component invalid：{0}", msg)) : new ComponentException(string.Format("Component invalid：{0}", msg), e);
         }
 
         /// <summary>
-        ///     向调用层抛出数据访问层异常
+        /// Throw DAL layer exception to a invoking layer
         /// </summary>
-        /// <param name="msg"> 自定义异常消息 </param>
-        /// <param name="e"> 实际引发异常的异常实例 </param>
+        /// <param name="msg"> Message </param>
+        /// <param name="e">  </param>
         public static DataAccessException ThrowDataAccessException(string msg, Exception e = null)
         {
             if (string.IsNullOrEmpty(msg) && e != null)
@@ -69,18 +70,18 @@ namespace BugManagement.Infrastructure.Tools
             }
             else if (string.IsNullOrEmpty(msg))
             {
-                msg = "未知数据访问层异常，详情请查看日志信息。";
+                msg = "Unknown exception.";
             }
             return e == null
-                ? new DataAccessException(string.Format("数据访问层异常：{0}", msg))
-                : new DataAccessException(string.Format("数据访问层异常：{0}", msg), e);
+                ? new DataAccessException(string.Format("DAL layer exception：{0}", msg))
+                : new DataAccessException(string.Format("DAL layer exception：{0}", msg), e);
         }
 
         /// <summary>
-        ///     向调用层抛出数据访问层异常
+        /// Throw BLL layer exception to a invoking layer
         /// </summary>
-        /// <param name="msg"> 自定义异常消息 </param>
-        /// <param name="e"> 实际引发异常的异常实例 </param>
+        /// <param name="msg"> Message </param>
+        /// <param name="e">  </param>
         public static BusinessException ThrowBusinessException(string msg, Exception e = null)
         {
             if (string.IsNullOrEmpty(msg) && e != null)
@@ -89,9 +90,9 @@ namespace BugManagement.Infrastructure.Tools
             }
             else if (string.IsNullOrEmpty(msg))
             {
-                msg = "未知业务逻辑层异常，详情请查看日志信息。";
+                msg = "Unknown exception.";
             }
-            return e == null ? new BusinessException(string.Format("业务逻辑层异常：{0}", msg)) : new BusinessException(string.Format("业务逻辑层异常：{0}", msg), e);
+            return e == null ? new BusinessException(string.Format("BLL layer exception：{0}", msg)) : new BusinessException(string.Format("BLL layer exception：{0}", msg), e);
         }
 
         #endregion

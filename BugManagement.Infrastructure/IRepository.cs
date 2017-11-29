@@ -18,7 +18,7 @@ namespace BugManagement.Infrastructure
 
         int Insert(TEntity entity, bool isSave = true);
 
-        int Insert(IEnumerable<Entity> entities, bool isSave = true);
+        int Insert(IEnumerable<TEntity> entities, bool isSave = true);
 
         int Delete(object id, bool isSave = true);
 
