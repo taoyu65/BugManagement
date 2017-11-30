@@ -30,8 +30,16 @@ namespace BugManagement
             services.AddMvc();
 
             var connectionString = Configuration.GetConnectionString("bugManagementDbConnectionString");
-            services.AddDbContext<MyContext>(x => x.UseSqlServer(connectionString));
+            //services.AddDbContext<MyContext>(x => x.UseSqlServer(connectionString));
 
+            ///re-locate the migrationAssembly back to the "BugManagement" namespace
+            string assemblyName = "BugManagement";
+            services.AddDbContext<MyContext>(options =>
+                options.UseSqlServer(connectionString,
+                    optionsBuilder =>
+                        optionsBuilder.MigrationsAssembly(assemblyName)
+                )
+           );
             //Inject repository
             //services.AddScoped<IActivityRepository, ActivityRepository>();
         }
