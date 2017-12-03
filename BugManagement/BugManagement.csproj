@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Entities\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -43,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BugManagement.Application\BugManagement.Application.csproj" />
     <ProjectReference Include="..\BugManagement.Infrastructure\BugManagement.Infrastructure.csproj" />
   </ItemGroup>
 
