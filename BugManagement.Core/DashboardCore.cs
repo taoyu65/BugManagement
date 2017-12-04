@@ -11,6 +11,11 @@ namespace BugManagement.Core
     {
         public IssueDashboard InitShow(int issueId)
         {
+            if (issueId == 0)
+            {
+
+            }
+
             return new IssueDashboard {
                 IssueSummaries = new List<IssueSummaryDashboard> {
                     new IssueSummaryDashboard {

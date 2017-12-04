@@ -1,12 +1,10 @@
 ﻿using BugManagement.Application.Contract;
 using BugManagement.Core;
 using BugManagement.Core.Dtos;
-using System.Composition;
 
 namespace BugManagement.Application
 {
-    [Export(typeof (IDashboard))]
-    public class Dashboard : DashboardCore, IDashboard
+    public class Dashboard :  DashboardCore, IDashboard
     {
         public IssueDashboard InitShow()
         {

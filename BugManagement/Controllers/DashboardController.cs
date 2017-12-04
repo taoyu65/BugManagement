@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using BugManagement.Application.Contract;
 using Microsoft.AspNetCore.Mvc;
-using System.Composition;
-using BugManagement.Application;
-using BugManagement.Application.Contract;
-using BugManagement.Core.Dtos;
 
 namespace BugManagement.Controllers
 {
@@ -15,8 +7,13 @@ namespace BugManagement.Controllers
     [Route("[controller]/[action]/{id?}")]
     public class DashboardController : Controller
     {
-        [Import]
-        public IDashboard Dashboard { get; set; }
+        
+        private IDashboard _dashboard { get; set; }
+
+        public DashboardController(IDashboard dashboard)
+        {
+            _dashboard = dashboard;
+        }
 
         public IActionResult DashboardShow()
         {
@@ -24,12 +21,11 @@ namespace BugManagement.Controllers
             return Ok("tsst");
         }
 
-       
+
         public IActionResult Page2()
         {
-            IDashboard id = new Dashboard();
-            IssueDashboard result = id.InitShow();
-            return Ok(result);
+
+            return Ok(_dashboard.InitShow());
         }
 
         [HttpGet]
