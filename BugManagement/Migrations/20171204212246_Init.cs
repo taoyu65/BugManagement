@@ -15,7 +15,7 @@ namespace BugManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 11, 30, 15, 10, 0, 342, DateTimeKind.Local)),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 4, 13, 22, 46, 128, DateTimeKind.Local)),
                     FileName = table.Column<string>(nullable: false),
                     Path = table.Column<string>(nullable: false)
                 },
@@ -258,7 +258,7 @@ namespace BugManagement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 11, 30, 15, 10, 0, 353, DateTimeKind.Local)),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 4, 13, 22, 46, 150, DateTimeKind.Local)),
                     IssueId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: false),

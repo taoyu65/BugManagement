@@ -1,8 +1,8 @@
 ﻿using BugManagement.Core.Entities;
-using BugManagement.Infrastructure.DbConfiguration;
+using BugManagement.Core.DbConfiguration;
 using Microsoft.EntityFrameworkCore;
 
-namespace BugManagement.Infrastructure.Context
+namespace BugManagement.Core.Context
 {
     public class MyContext: DbContext
     {

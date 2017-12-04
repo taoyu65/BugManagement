@@ -1,7 +1,7 @@
 ﻿using BugManagement.Application;
 using BugManagement.Application.Contract;
-using BugManagement.Infrastructure.Context;
-using BugManagement.Infrastructure.Seeder;
+using BugManagement.Core.Context;
+using BugManagement.Core.Seeder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +59,7 @@ namespace BugManagement
             app.UseStatusCodePages();
 
             //<!-- Seed -->
-            myContext.SeedForContext();
+            //myContext.SeedForContext();
 
             app.UseMvc(routes =>
             {

@@ -1,9 +1,9 @@
 ﻿using BugManagement.Core.Entities;
-using BugManagement.Infrastructure.Context;
+using BugManagement.Core.Context;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BugManagement.Infrastructure.Seeder
+namespace BugManagement.Core.Seeder
 {
     public static class MyContextSeeder
     {

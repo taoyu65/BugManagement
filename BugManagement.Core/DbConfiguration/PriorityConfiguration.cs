@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BugManagement.Infrastructure.DbConfiguration
+namespace BugManagement.Core.DbConfiguration
 {
     public class PriorityConfiguration: IEntityTypeConfiguration<Priority>
     {

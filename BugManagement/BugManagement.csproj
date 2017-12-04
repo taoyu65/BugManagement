@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BugManagement.Application\BugManagement.Application.csproj" />
-    <ProjectReference Include="..\BugManagement.Infrastructure\BugManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace BugManagement.Infrastructure.DbConfiguration
+namespace BugManagement.Core.DbConfiguration
 {
     public class AttachmentConfiguration: IEntityTypeConfiguration<Attachment>
     {
