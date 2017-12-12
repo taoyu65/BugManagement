@@ -1,4 +1,4 @@
-﻿namespace BugManagement.Infrastructure
+﻿namespace BugManagement.Core
 {
     public interface IUnitOfWork
     {

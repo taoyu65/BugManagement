@@ -1,7 +1,4 @@
 ﻿using BugManagement.Core.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BugManagement.Core.Contract
 {

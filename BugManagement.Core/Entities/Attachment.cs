@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BugManagement.Core.Tools;
+using System;
 
 namespace BugManagement.Core.Entities
 {
-    public class Attachment
+    public class Attachment : Entity
     {
         public int Id { get; set; }
         public string FileName { get; set; }

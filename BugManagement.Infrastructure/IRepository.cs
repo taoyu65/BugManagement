@@ -1,10 +1,10 @@
-﻿using BugManagement.Infrastructure.Tools;
+﻿using BugManagement.Core.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace BugManagement.Infrastructure
+namespace BugManagement.Core
 {
     public interface IRepository<TEntity> where TEntity: Entity
     {

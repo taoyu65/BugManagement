@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace BugManagement.Infrastructure.Tools.Exceptions
+namespace BugManagement.Core.Tools.Exceptions
 {
     [Serializable]
     public class ComponentException : Exception

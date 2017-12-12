@@ -1,10 +1,10 @@
-﻿using BugManagement.Infrastructure.Tools;
-using BugManagement.Infrastructure.Tools.Helpers;
+﻿using BugManagement.Core.Tools;
+using BugManagement.Core.Tools.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace BugManagement.Infrastructure
+namespace BugManagement.Core
 {
     public abstract class UnitOfWorkContextBase : IUnitOfWorkContext
     {

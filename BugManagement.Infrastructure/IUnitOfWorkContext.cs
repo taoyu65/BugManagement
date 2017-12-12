@@ -1,9 +1,9 @@
-﻿using BugManagement.Infrastructure.Tools;
+﻿using BugManagement.Core.Tools;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
-namespace BugManagement.Infrastructure
+namespace BugManagement.Core
 {
     public interface IUnitOfWorkContext: IUnitOfWork, IDisposable
     {

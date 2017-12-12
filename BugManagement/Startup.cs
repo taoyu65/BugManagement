@@ -1,6 +1,7 @@
 ﻿using BugManagement.Application;
 using BugManagement.Application.Contract;
 using BugManagement.Core.Context;
+using BugManagement.Core.Repository;
 using BugManagement.Core.Seeder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,7 +40,7 @@ namespace BugManagement
            );
             //Inject repository
             //services.AddScoped<IActivityRepository, ActivityRepository>();
-            services.AddScoped<IDashboard, Dashboard>();
+            InitReflection(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,12 +60,19 @@ namespace BugManagement
             app.UseStatusCodePages();
 
             //<!-- Seed -->
-            //myContext.SeedForContext();
+            myContext.SeedForContext();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "api/{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void InitReflection(IServiceCollection services)
+        {
+            services.AddTransient<MyContext>();
+            services.AddScoped<IDashboard, Dashboard>();
+            services.AddScoped<IIssueRepository, IssueRepository>();
         }
     }
 }

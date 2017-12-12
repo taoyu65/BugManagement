@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BugManagement.Infrastructure.Tools.Extensions
+namespace BugManagement.Core.Tools.Extensions
 {
     public static class ObjectExtension
     {

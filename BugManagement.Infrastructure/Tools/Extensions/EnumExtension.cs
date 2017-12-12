@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace BugManagement.Infrastructure.Tools.Extensions
+namespace BugManagement.Core.Tools.Extensions
 {
     public static class EnumExtension
     {

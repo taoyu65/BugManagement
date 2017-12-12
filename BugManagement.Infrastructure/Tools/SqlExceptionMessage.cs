@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BugManagement.Infrastructure.Tools
+namespace BugManagement.Core.Tools
 {
     internal static class SqlExceptionMessage
     {

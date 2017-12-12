@@ -1,11 +1,16 @@
 ﻿using BugManagement.Application.Contract;
 using BugManagement.Core;
 using BugManagement.Core.Dtos;
+using BugManagement.Core.Repository;
 
 namespace BugManagement.Application
 {
     public class Dashboard :  DashboardCore, IDashboard
     {
+        public Dashboard(IIssueRepository issueRepository) : base(issueRepository)
+        {
+        }
+
         public IssueDashboard InitShow()
         {
             return InitShow(0);

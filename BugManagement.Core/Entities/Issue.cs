@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BugManagement.Core.Tools;
+using System.Collections.Generic;
 
 namespace BugManagement.Core.Entities
 {
-    public class Issue
+    public class Issue : Entity
     {
         public int Id { get; set; }
         public string Summary { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace BugManagement.Core.Entities
+﻿using BugManagement.Core.Tools;
+
+namespace BugManagement.Core.Entities
 {
-    public class UserRole
+    public class UserRole : Entity
     {
         public int Id { get; set; }
         public int UserId { get; set; }

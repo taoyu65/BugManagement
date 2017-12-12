@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace BugManagement.Infrastructure.Tools.Exceptions
+namespace BugManagement.Core.Tools.Exceptions
 {
     [Serializable]
     public class DataAccessException : Exception

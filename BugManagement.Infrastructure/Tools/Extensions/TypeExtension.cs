@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace BugManagement.Infrastructure.Tools.Extensions
+namespace BugManagement.Core.Tools.Extensions
 {
     public static class TypeExtension
     {

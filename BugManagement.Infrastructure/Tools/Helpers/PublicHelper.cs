@@ -1,8 +1,8 @@
-﻿using BugManagement.Infrastructure.Tools.Exceptions;
-using BugManagement.Infrastructure.Tools.Extensions;
+﻿using BugManagement.Core.Tools.Exceptions;
+using BugManagement.Core.Tools.Extensions;
 using System;
 
-namespace BugManagement.Infrastructure.Tools.Helpers
+namespace BugManagement.Core.Tools.Helpers
 {
     public static class PublicHelper
     {

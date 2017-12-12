@@ -1,21 +1,20 @@
-﻿using BugManagement.Infrastructure.Tools;
-using BugManagement.Infrastructure.Tools.Exceptions;
-using BugManagement.Infrastructure.Tools.Helpers;
+﻿using BugManagement.Core.Context;
+using BugManagement.Core.Tools;
+using BugManagement.Core.Tools.Exceptions;
+using BugManagement.Core.Tools.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Composition;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
-namespace BugManagement.Infrastructure
+namespace BugManagement.Core
 {
     public abstract class EFRepositoryBase<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         #region Property
 
-        [Import]
-        public IUnitOfWork UnitOfWork { get; set; }
+        private IUnitOfWork UnitOfWork { get; set; }
+        private MyContext _myContext { get; set; }
 
         protected IUnitOfWorkContext EFContext
         {
@@ -29,7 +28,7 @@ namespace BugManagement.Infrastructure
             }
         }
 
-        public virtual IQueryable<TEntity> Entities
+        public IQueryable<TEntity> Entities
         {
             get
             {
@@ -41,10 +40,16 @@ namespace BugManagement.Infrastructure
 
         #region Public Method
 
+        public EFRepositoryBase(MyContext myContext)
+        {
+            _myContext = myContext;
+            UnitOfWork = new MyUnitOfWorkContext(myContext);
+        }
+
         public virtual int Insert(TEntity entity, bool isSave = true)
         {
             PublicHelper.CheckArgument(entity, "entity");
-            EFContext.RegisterNew(entity);
+            EFContext.RegisterNew(entity);   
             return isSave ? EFContext.Commit() : 0;
         }
 
