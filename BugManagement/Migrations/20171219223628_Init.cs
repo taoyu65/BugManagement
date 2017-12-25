@@ -15,7 +15,7 @@ namespace BugManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 4, 13, 22, 46, 128, DateTimeKind.Local)),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 19, 14, 36, 28, 166, DateTimeKind.Local)),
                     FileName = table.Column<string>(nullable: false),
                     Path = table.Column<string>(nullable: false)
                 },
@@ -156,14 +156,12 @@ namespace BugManagement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AssigneeId = table.Column<int>(nullable: true),
                     AssigneeUserId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     IssueTypeId = table.Column<int>(nullable: false),
                     Label = table.Column<string>(nullable: true),
                     PriorityId = table.Column<int>(nullable: false),
                     ProjectVersionId = table.Column<int>(nullable: false),
-                    ReporterId = table.Column<int>(nullable: true),
                     ReporterUserId = table.Column<int>(nullable: false),
                     Summary = table.Column<string>(nullable: false)
                 },
@@ -171,8 +169,8 @@ namespace BugManagement.Migrations
                 {
                     table.PrimaryKey("PK_Issues", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Issues_Users_AssigneeId",
-                        column: x => x.AssigneeId,
+                        name: "FK_Issues_Users_AssigneeUserId",
+                        column: x => x.AssigneeUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -195,8 +193,8 @@ namespace BugManagement.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Issues_Users_ReporterId",
-                        column: x => x.ReporterId,
+                        name: "FK_Issues_Users_ReporterUserId",
+                        column: x => x.ReporterUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -238,12 +236,6 @@ namespace BugManagement.Migrations
                 {
                     table.PrimaryKey("PK_UserRoles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserRoles_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Roles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
@@ -258,7 +250,7 @@ namespace BugManagement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 4, 13, 22, 46, 150, DateTimeKind.Local)),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2017, 12, 19, 14, 36, 28, 180, DateTimeKind.Local)),
                     IssueId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: false),
@@ -292,9 +284,9 @@ namespace BugManagement.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Issues_AssigneeId",
+                name: "IX_Issues_AssigneeUserId",
                 table: "Issues",
-                column: "AssigneeId");
+                column: "AssigneeUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Issues_IssueTypeId",
@@ -312,9 +304,9 @@ namespace BugManagement.Migrations
                 column: "ProjectVersionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Issues_ReporterId",
+                name: "IX_Issues_ReporterUserId",
                 table: "Issues",
-                column: "ReporterId");
+                column: "ReporterUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectLeaderId",
@@ -329,11 +321,6 @@ namespace BugManagement.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermissions_RoleId",
                 table: "RolePermissions",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRoles_RoleId",
-                table: "UserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(

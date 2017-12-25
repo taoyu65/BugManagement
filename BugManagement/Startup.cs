@@ -72,7 +72,10 @@ namespace BugManagement
         {
             services.AddTransient<MyContext>();
             services.AddScoped<IDashboard, Dashboard>();
+            services.AddScoped<IUser, User>();
+
             services.AddScoped<IIssueRepository, IssueRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

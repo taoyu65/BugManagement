@@ -10,5 +10,9 @@ namespace BugManagement.Core.Entities
         public string Password { get; set; }
 
         public ICollection<Activity> Activities { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
+
+        public ICollection<Issue> SuggestedIssues { get; set; }
+        public ICollection<Issue> AssignedIssues { get; set; }
     }
 }

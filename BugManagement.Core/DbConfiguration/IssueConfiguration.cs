@@ -15,6 +15,17 @@ namespace BugManagement.Core.DbConfiguration
             builder.Property(x => x.Description).HasColumnType("text");
             builder.Property(x => x.ProjectVersionId).IsRequired();
             builder.Property(x => x.PriorityId).IsRequired();
+            //builder.Ignore(x => x.Reporter);
+            //builder.Ignore(x => x.Assignee);
+            builder.HasOne(x => x.Assignee)
+                .WithMany(x => x.SuggestedIssues)
+                .HasForeignKey(x => x.AssigneeUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Reporter)
+                .WithMany(x => x.AssignedIssues)
+                .HasForeignKey(x => x.ReporterUserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

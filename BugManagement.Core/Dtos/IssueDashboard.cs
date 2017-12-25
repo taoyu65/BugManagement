@@ -7,5 +7,10 @@ namespace BugManagement.Core.Dtos
     {
         public ICollection<IssueSummaryDashboard> IssueSummaries { get; set; }
         public Issue Issue { get; set; }
+
+        public IssueDashboard()
+        {
+            IssueSummaries = new List<IssueSummaryDashboard>();
+        }
     }
 }

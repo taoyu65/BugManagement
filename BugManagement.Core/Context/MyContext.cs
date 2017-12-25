@@ -27,7 +27,7 @@ namespace BugManagement.Core.Context
             modelBuilder.ApplyConfiguration(new PermissionConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
-            
+
             //todo: finish the relation design
         }
 

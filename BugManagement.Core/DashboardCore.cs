@@ -32,22 +32,24 @@ namespace BugManagement.Core
         {
             if (issueId == 0)
             {
-
             }
-            IQueryable<Issue> issues = IssueRepository.Entities;
+
+            IQueryable<Issue> issues = IssueRepository.DashboardInfo();
 
             IssueDashboard issueDashboard = new IssueDashboard();
             Issue showedIssue = issues.FirstOrDefault();
+            issueDashboard.Issue = showedIssue;
             foreach (Issue issue in issues)
             {
-                issueDashboard.IssueSummaries.Add(new IssueSummaryDashboard {
+                var issueSummaryDashboard = new IssueSummaryDashboard {
+                    Id = issue.Id,
                     IssueSummary = issue.Summary,
                     Priority = issue.Priority.Level,
                     IssueType = issue.IssueType.Name,
                     Assignee = issue.Assignee.UserName
-                });
+                };
+                issueDashboard.IssueSummaries.Add(issueSummaryDashboard);
             }
-            issueDashboard.Issue = showedIssue;
             return issueDashboard;
             //return new IssueDashboard {
             //    IssueSummaries = new List<IssueSummaryDashboard> {

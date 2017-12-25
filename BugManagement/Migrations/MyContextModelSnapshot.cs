@@ -30,7 +30,7 @@ namespace BugManagement.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasDefaultValue(new DateTime(2017, 12, 4, 13, 22, 46, 150, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2017, 12, 19, 14, 36, 28, 180, DateTimeKind.Local));
 
                     b.Property<int>("IssueId");
 
@@ -57,7 +57,7 @@ namespace BugManagement.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2017, 12, 4, 13, 22, 46, 128, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2017, 12, 19, 14, 36, 28, 166, DateTimeKind.Local));
 
                     b.Property<string>("FileName")
                         .IsRequired();
@@ -75,8 +75,6 @@ namespace BugManagement.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AssigneeId");
-
                     b.Property<int>("AssigneeUserId");
 
                     b.Property<string>("Description")
@@ -90,8 +88,6 @@ namespace BugManagement.Migrations
 
                     b.Property<int>("ProjectVersionId");
 
-                    b.Property<int?>("ReporterId");
-
                     b.Property<int>("ReporterUserId");
 
                     b.Property<string>("Summary")
@@ -99,7 +95,7 @@ namespace BugManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AssigneeId");
+                    b.HasIndex("AssigneeUserId");
 
                     b.HasIndex("IssueTypeId");
 
@@ -107,7 +103,7 @@ namespace BugManagement.Migrations
 
                     b.HasIndex("ProjectVersionId");
 
-                    b.HasIndex("ReporterId");
+                    b.HasIndex("ReporterUserId");
 
                     b.ToTable("Issues");
                 });
@@ -287,8 +283,6 @@ namespace BugManagement.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
@@ -310,8 +304,9 @@ namespace BugManagement.Migrations
             modelBuilder.Entity("BugManagement.Core.Entities.Issue", b =>
                 {
                     b.HasOne("BugManagement.Core.Entities.User", "Assignee")
-                        .WithMany()
-                        .HasForeignKey("AssigneeId");
+                        .WithMany("SuggestedIssues")
+                        .HasForeignKey("AssigneeUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BugManagement.Core.Entities.IssueType", "IssueType")
                         .WithMany()
@@ -329,8 +324,9 @@ namespace BugManagement.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BugManagement.Core.Entities.User", "Reporter")
-                        .WithMany()
-                        .HasForeignKey("ReporterId");
+                        .WithMany("AssignedIssues")
+                        .HasForeignKey("ReporterUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("BugManagement.Core.Entities.Project", b =>
@@ -356,13 +352,8 @@ namespace BugManagement.Migrations
 
             modelBuilder.Entity("BugManagement.Core.Entities.UserRole", b =>
                 {
-                    b.HasOne("BugManagement.Core.Entities.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BugManagement.Core.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
