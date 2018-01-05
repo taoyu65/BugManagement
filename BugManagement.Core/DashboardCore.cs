@@ -28,7 +28,7 @@ namespace BugManagement.Core
             IssueRepository = issueRepository;
         }
 
-        public IssueDashboard InitShow(int issueId)
+        public IssueDashboardDto InitShow(int issueId)
         {
             if (issueId == 0)
             {
@@ -36,18 +36,19 @@ namespace BugManagement.Core
 
             IQueryable<Issue> issues = IssueRepository.DashboardInfo();
 
-            IssueDashboard issueDashboard = new IssueDashboard();
+            IssueDashboardDto issueDashboard = new IssueDashboardDto();
             Issue showedIssue = issues.FirstOrDefault();
             issueDashboard.Issue = showedIssue;
             foreach (Issue issue in issues)
             {
-                var issueSummaryDashboard = new IssueSummaryDashboard {
-                    Id = issue.Id,
-                    IssueSummary = issue.Summary,
-                    Priority = issue.Priority.Level,
-                    IssueType = issue.IssueType.Name,
-                    Assignee = issue.Assignee.UserName
-                };
+                //var issueSummaryDashboard = new IssueSummaryDashboardDto {
+                //    Id = issue.Id,
+                //    IssueSummary = issue.Summary,
+                //    Priority = issue.Priority.Level,
+                //    IssueType = issue.IssueType.Name,
+                //    Assignee = issue.Assignee.UserName
+                //};
+                var issueSummaryDashboard = AutoMapper.Mapper.Map<IssueSummaryDashboardDto>(issue);
                 issueDashboard.IssueSummaries.Add(issueSummaryDashboard);
             }
             return issueDashboard;

@@ -27,7 +27,7 @@ namespace BugManagement.Controllers
 
         public IActionResult Page2()
         {
-            return Ok(_dashboard.InitShow());
+            return Ok(_dashboard.InitShow().IssueSummaries);
         }
 
         [HttpGet]

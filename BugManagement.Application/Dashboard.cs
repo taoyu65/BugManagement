@@ -11,14 +11,14 @@ namespace BugManagement.Application
         {
         }
 
-        public IssueDashboard InitShow()
+        public IssueDashboardDto InitShow()
         {
             return InitShow(0);
         }
 
-        public new IssueDashboard InitShow(int issueId)
+        public new IssueDashboardDto InitShow(int issueId)
         {
-            IssueDashboard IssueDashboard = base.InitShow(issueId);
+            IssueDashboardDto IssueDashboard = base.InitShow(issueId);
             IssueDashboard.Issue.Description = "Add description!";
             return IssueDashboard;
         }

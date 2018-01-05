@@ -9,6 +9,6 @@ namespace BugManagement.Core.Contract
         /// </summary>
         /// <param name="issueId"></param>
         /// <returns></returns>
-        IssueDashboard InitShow(int issueId);
+        IssueDashboardDto InitShow(int issueId);
     }
 }

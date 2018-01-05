@@ -2,7 +2,7 @@
 
 namespace BugManagement.Core.Dtos
 {
-    public class IssueSummaryDashboard
+    public class IssueSummaryDashboardDto
     {
         public int Id { get; set; }
         public string IssueSummary { get; set; }

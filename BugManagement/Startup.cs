@@ -1,6 +1,8 @@
 ﻿using BugManagement.Application;
 using BugManagement.Application.Contract;
 using BugManagement.Core.Context;
+using BugManagement.Core.Dtos;
+using BugManagement.Core.Entities;
 using BugManagement.Core.Repository;
 using BugManagement.Core.Seeder;
 using Microsoft.AspNetCore.Builder;
@@ -62,6 +64,16 @@ namespace BugManagement
             //<!-- Seed -->
             myContext.SeedForContext();
 
+            //<!-- AutoMapper -->
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Issue, IssueSummaryDashboardDto>()
+                .ForMember(d => d.IssueSummary, opt => opt.MapFrom(s => s.Summary))
+                .ForMember(d => d.Priority, opt => opt.MapFrom(s => s.Priority.Level))
+                .ForMember(d => d.Assignee, opt => opt.MapFrom(s => s.Assignee.UserName))
+                .ForMember(d => d.IssueType, opt => opt.MapFrom(s => s.IssueType.Name));
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "api/{controller=Home}/{action=Index}/{id?}");
@@ -72,7 +84,7 @@ namespace BugManagement
         {
             services.AddTransient<MyContext>();
             services.AddScoped<IDashboard, Dashboard>();
-            services.AddScoped<IUser, User>();
+            services.AddScoped<IUser, Application.User>();
 
             services.AddScoped<IIssueRepository, IssueRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

@@ -5,7 +5,7 @@ namespace BugManagement.Application.Contract
 {
     public interface IDashboard : IDashboardCore
     {
-        IssueDashboard InitShow();
-        new IssueDashboard InitShow(int issueId);
+        IssueDashboardDto InitShow();
+        new IssueDashboardDto InitShow(int issueId);
     }
 }
