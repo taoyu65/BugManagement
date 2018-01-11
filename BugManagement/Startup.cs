@@ -28,6 +28,7 @@ namespace BugManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors();
 
             var connectionString = Configuration.GetConnectionString("bugManagementDbConnectionString");
             //services.AddDbContext<MyContext>(x => x.UseSqlServer(connectionString));
@@ -50,6 +51,8 @@ namespace BugManagement
             ILoggerFactory loggerFactory,
             MyContext myContext)
         {
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
+
             //<!-- NLog -->
             ///loggerFactory.AddProvider(new NLogLoggerProvider());//OK as well
             loggerFactory.AddNLog();

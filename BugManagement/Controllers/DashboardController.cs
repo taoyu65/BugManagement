@@ -11,8 +11,6 @@ namespace BugManagement.Controllers
         
         private IDashboard _dashboard { get; set; }
     
-        [Import]
-        private ITest _test { get; set; }
         public DashboardController(IDashboard dashboard)
         {
             _dashboard = dashboard;
@@ -21,7 +19,7 @@ namespace BugManagement.Controllers
         public IActionResult DashboardShow()
         {
 
-            return Ok(_test.a());
+            return Ok();
         }
 
 
@@ -30,23 +28,29 @@ namespace BugManagement.Controllers
             return Ok(_dashboard.InitShow().IssueSummaries);
         }
 
+        [HttpPost]
+        public IActionResult Post([FromBody] Persion persion)
+        {
+            return Ok("This is from returning: name is " + persion.name + "age: " + persion.age.ToString());
+        }
+
+        [HttpPost]
+        public string PostTest(string a)
+        {
+            
+            return "AAA:" + a;
+        }
+
         [HttpGet]
         public IActionResult Restful()
         {
-            return Ok("restful" + _test.a());
+            return Ok("restful");
         }
     }
 
-   [Export(typeof(ITest))]
-    public class Test : ITest
+    public class Persion
     {
-        public string a()
-        {
-            return "111";
-        }
-    }
-   
-    public interface ITest {
-        string a();
+        public string name;
+        public int age;
     }
 }
